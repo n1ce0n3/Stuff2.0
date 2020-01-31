@@ -35,7 +35,7 @@ which il2 2>/dev/null 1>/dev/null
 	else
 		clear && echo -e "Directories found in $(pwd):\n"; ls -ltraF | awk '{print $9}' | egrep ".*\/" | egrep -v "(\.\/|\.\.\/)"
 		read -p "Please enter App's folder name, e.g. folder is named \"AppName.app\", you should type AppName. `echo $'\n> '`"  target;
-		cp $(echo $target.app/Data/sharedassets0.assets VersionFile);
+		cp $target.app/Data/unity* ./VersionFile
 		strings VersionFile | head -n1 | xclip -sel primary;
 		il2 $target.app/$target $target.app/Data/Managed/Metadata/global-metadata.dat $(xclip -o) 3;
 		rm VersionFile;
